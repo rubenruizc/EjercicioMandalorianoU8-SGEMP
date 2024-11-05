@@ -1,0 +1,36 @@
+﻿﻿@using EjercicioMandalorianoU8_SGEMP.Models.VM
+@model clsVistaMisionesVM
+
+@if (Model.misiones == null)
+{
+    <div class="alert alert-warning">Descansa un poco y vuelve si eso a las 8 am</div>
+}
+else
+{
+    <div class="text-center">
+        <h1>Misiones</h1>
+
+        <form method="post">
+            <div>
+                @Html.LabelFor(m => m.id, "Selecciona una Misión:")
+                @Html.DropDownListFor(m => m.id,
+                         new SelectList(Model.misiones, "id", "nombre"),
+                         "Seleccione una misión",
+                         new { @class = "form-control" })
+
+                <input type="submit" class="btn btn-primary" value="Ver">
+            </div>
+        </form>
+ 
+        @if (Model.nombre != "")
+        {
+            <div>
+                <h1>@Model.nombre</h1>
+                <h3>@Model.descripcion</h3>
+                <h5>@Model.recompensa</h5>
+            </div>
+        }
+        
+        
+    </div>
+}
