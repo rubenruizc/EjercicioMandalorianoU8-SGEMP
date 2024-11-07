@@ -1,5 +1,6 @@
 using EjercicioMandalorianoU8_SGEMP.Models;
 using EjercicioMandalorianoU8_SGEMP.Models.BL;
+using EjercicioMandalorianoU8_SGEMP.Models.ENT;
 using EjercicioMandalorianoU8_SGEMP.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -26,8 +27,8 @@ namespace EjercicioMandalorianoU8_SGEMP.Controllers
 
             try
             {
-                
-                var vistaModel = new clsVistaMisionesVM();
+
+                clsVistaMisionesVM vistaModel = new clsVistaMisionesVM();
                 resultado = View(vistaModel);
 
             }
@@ -40,7 +41,7 @@ namespace EjercicioMandalorianoU8_SGEMP.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(clsVistaMisionesVM vistaModel)
+        public IActionResult Index(int id)
         {
             IActionResult resultado;
 
@@ -52,8 +53,9 @@ namespace EjercicioMandalorianoU8_SGEMP.Controllers
 
                 //throw new Exception();
                 
+                clsVistaMisionesVM vistaModel = new clsVistaMisionesVM();
                 // Obtener la misión basada en el id seleccionado
-                var misionSeleccionada = clsObtenerMisionesBL.obtenerMisionByIDBL(vistaModel.id);
+                clsMisionENT misionSeleccionada = clsObtenerMisionesBL.obtenerMisionByIDBL(vistaModel.id);
 
                 // Actualizar el ViewModel con la misión seleccionada
                 vistaModel.nombre = misionSeleccionada.nombre;
