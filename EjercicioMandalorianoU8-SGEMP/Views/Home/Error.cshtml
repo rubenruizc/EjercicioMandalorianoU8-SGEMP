@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Asegúrate de que esto se adapte a tu proyecto
+}
+
+<!-- Estilos personalizados para la página de error -->
+<style>
+    body {
+        background-color: #0d0d0d;
+        color: #e0e0e0;
+        font-family: 'Orbitron', sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin-top: 100px;
+        padding: 30px;
+        text-align: center;
+        background: rgba(30, 30, 30, 0.9);
+        border: 3px solid #ff5050;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(255, 80, 80, 0.6);
+    }
+    h1 {
+        color: #ff5050;
+        font-size: 3em;
+        text-shadow: 0 0 10px #ff5050;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 1.2em;
+        margin-top: 15px;
+    }
+    .btn {
+        background-color: #ff5050;
+        border: none;
+        color: #0d0d0d;
+        font-weight: bold;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 5px #ff5050;
+        box-shadow: 0 0 8px #ff5050;
+    }
+    .btn:hover {
+        background-color: #ff3333;
+    }
+</style>
+
+<div class="container">
+    <h1>Error 404</h1>
+    <p>Lo sentimos, pero la página que estás buscando no existe o ha ocurrido un error inesperado.</p>
+    <p>Puedes regresar al inicio o intentar nuevamente.</p>
+
+    <a href="/" class="btn mt-4">Volver al Inicio</a>
+</div>

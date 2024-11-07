@@ -15,24 +15,60 @@ namespace EjercicioMandalorianoU8_SGEMP.Controllers
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
-            var vistaModel = new clsVistaMisionesVM();
-            return View(vistaModel);
+
+
+            ActionResult resultado;
+
+            
+
+            try
+            {
+                
+                var vistaModel = new clsVistaMisionesVM();
+                resultado = View(vistaModel);
+
+            }
+            catch (Exception ex)
+            {
+                resultado = View("Error");
+            }
+
+            return resultado;
         }
 
         [HttpPost]
         public IActionResult Index(clsVistaMisionesVM vistaModel)
         {
-            // Obtener la misión basada en el id seleccionado
-            var misionSeleccionada = clsObtenerMisionesBL.obtenerMisionByIDBL(vistaModel.id);
+            IActionResult resultado;
 
-            // Actualizar el ViewModel con la misión seleccionada
-            vistaModel.nombre = misionSeleccionada.nombre;
-            vistaModel.descripcion = misionSeleccionada.descripcion;
-            vistaModel.recompensa = misionSeleccionada.recompensa;
+            
 
-            return View(vistaModel);
+            try
+            {
+                //Comprobar la excepcion
+
+                //throw new Exception();
+                
+                // Obtener la misión basada en el id seleccionado
+                var misionSeleccionada = clsObtenerMisionesBL.obtenerMisionByIDBL(vistaModel.id);
+
+                // Actualizar el ViewModel con la misión seleccionada
+                vistaModel.nombre = misionSeleccionada.nombre;
+                vistaModel.descripcion = misionSeleccionada.descripcion;
+                vistaModel.recompensa = misionSeleccionada.recompensa;
+
+                resultado = View(vistaModel);
+            }
+            catch (Exception ex)
+            {
+                resultado = View("Error");
+            }
+
+
+            return resultado;
         }
 
         public IActionResult Privacy()

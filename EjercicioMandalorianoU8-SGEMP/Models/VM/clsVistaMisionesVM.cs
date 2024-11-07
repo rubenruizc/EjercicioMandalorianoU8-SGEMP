@@ -10,8 +10,7 @@ namespace EjercicioMandalorianoU8_SGEMP.Models.VM
         public clsVistaMisionesVM()
         {
             misiones = clsObtenerMisionesBL.obtenerMisionesBL();
-            // Verifica que 'misiones' no sea nulo
-
+           
         }
     }
 

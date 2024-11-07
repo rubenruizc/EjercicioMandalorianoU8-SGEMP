@@ -1,36 +1,111 @@
-﻿﻿@using EjercicioMandalorianoU8_SGEMP.Models.VM
+﻿@using EjercicioMandalorianoU8_SGEMP.Models.VM
 @model clsVistaMisionesVM
+
+
+<style>
+    body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+        font-family: 'Orbitron', sans-serif;
+    }
+    .container {
+        max-width: 800px;
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(20, 20, 20, 0.9); 
+        border: 2px solid #00ffcc;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.6);
+    }
+    h1 {
+        color: #00ffcc;
+        text-shadow: 0 0 10px #00ffcc;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    .btn-primary {
+        background-color: #00ffcc;
+        border-color: #00ffcc;
+        color: #1a1a1a;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 0 0 8px #00ffcc;
+    }
+    .btn-primary:hover {
+        background-color: #00ccaa;
+        border-color: #00ccaa;
+    }
+    .form-control, .form-group label {
+        background-color: rgba(20, 20, 20, 0.9);
+        border: 2px solid #00ffcc;
+        color: #e0e0e0;
+        font-weight: bold;
+    }
+    .card {
+        background-color: rgba(30, 30, 30, 0.95);
+        border: 2px solid #00ffcc;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.6);
+        color: #e0e0e0;
+    }
+    .card-title {
+        color: #ffcc00;
+        text-shadow: 0px 0px 10px #ffcc00;
+        font-size: 1.8em;
+    }
+    .card-text {
+        font-size: 1.2em;
+    }
+    h5 {
+        color: #ff5050;
+        font-size: 1.3em;
+        text-shadow: 0px 0px 10px #ff5050;
+    }
+    .alert-warning {
+        background-color: rgba(255, 255, 0, 0.2);
+        border: 1px solid #ffc107;
+        color: #ffc107;
+        text-shadow: 0px 0px 10px #ffc107;
+        padding: 15px;
+    }
+</style>
 
 @if (Model.misiones == null)
 {
-    <div class="alert alert-warning">Descansa un poco y vuelve si eso a las 8 am</div>
+    <div class="alert alert-warning text-center">
+        <i class="fas fa-exclamation-triangle" style="font-size: 1.5em;"></i>
+        <p class="mt-2">Descansa un poco y vuelve si eso a las 8 am</p>
+    </div>
 }
 else
 {
-    <div class="text-center">
-        <h1>Misiones</h1>
+    <div class="container text-center">
+        <h1>Misiones Disponibles</h1>
 
         <form method="post">
-            <div>
-                @Html.LabelFor(m => m.id, "Selecciona una Misión:")
-                @Html.DropDownListFor(m => m.id,
+            <div class="form-group row justify-content-center align-items-center">
+                <label for="missionSelect" class="col-form-label col-auto" style="font-size: 1.2em;">Selecciona una Misión:</label>
+                <div class="col-md-5">
+                    @Html.DropDownListFor(m => m.id,
                          new SelectList(Model.misiones, "id", "nombre"),
                          "Seleccione una misión",
-                         new { @class = "form-control" })
-
-                <input type="submit" class="btn btn-primary" value="Ver">
+                         new { @class = "form-control", id = "missionSelect" })
+                </div>
+                <div class="col-auto">
+                    <input type="submit" class="btn btn-primary" value="Ver">
+                </div>
             </div>
         </form>
- 
-        @if (Model.nombre != "")
+
+        @if (!string.IsNullOrEmpty(Model.nombre))
         {
-            <div>
-                <h1>@Model.nombre</h1>
-                <h3>@Model.descripcion</h3>
-                <h5>@Model.recompensa</h5>
+            <div class="card mt-4">
+                <div class="card-body text-center">
+                    <h2 class="card-title">@Model.nombre</h2>
+                    <p class="card-text">@Model.descripcion</p>
+                    <h5>Recompensa: @Model.recompensa €</h5>
+                </div>
             </div>
         }
-        
-        
     </div>
 }

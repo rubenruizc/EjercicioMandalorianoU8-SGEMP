@@ -8,6 +8,7 @@
 
     public clsMisionENT() { }
 
+
     public clsMisionENT(int id, string nombre, string descripcion, int recompensa)
     {
         this.id = id;
