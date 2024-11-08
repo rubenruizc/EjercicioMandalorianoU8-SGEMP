@@ -53,14 +53,11 @@ namespace EjercicioMandalorianoU8_SGEMP.Controllers
 
                 //throw new Exception();
                 
-                clsVistaMisionesVM vistaModel = new clsVistaMisionesVM();
+                
                 // Obtener la misión basada en el id seleccionado
-                clsMisionENT misionSeleccionada = clsObtenerMisionesBL.obtenerMisionByIDBL(vistaModel.id);
+                clsMisionENT misionSeleccionada = clsObtenerMisionesBL.obtenerMisionByIDBL(id);
 
-                // Actualizar el ViewModel con la misión seleccionada
-                vistaModel.nombre = misionSeleccionada.nombre;
-                vistaModel.descripcion = misionSeleccionada.descripcion;
-                vistaModel.recompensa = misionSeleccionada.recompensa;
+                clsVistaMisionesVM vistaModel = new clsVistaMisionesVM(misionSeleccionada);
 
                 resultado = View(vistaModel);
             }

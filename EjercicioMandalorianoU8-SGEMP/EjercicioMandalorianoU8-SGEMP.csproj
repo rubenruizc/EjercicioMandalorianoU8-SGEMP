@@ -7,4 +7,8 @@
     <RootNamespace>EjercicioMandalorianoU8_SGEMP</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MandalorianoBL\MandalorianoBL.csproj" />
+  </ItemGroup>
+
 </Project>
